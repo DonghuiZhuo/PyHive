@@ -19,6 +19,7 @@ from sqlalchemy.sql import compiler
 from sqlalchemy.sql.compiler import SQLCompiler
 
 from pyhive import presto
+from pyhive import kwest
 from pyhive.common import UniversalSet
 
 
@@ -205,3 +206,10 @@ class PrestoDialect(default.DefaultDialect):
     def _check_unicode_description(self, connection):
         # requests gives back Unicode strings
         return True
+
+class KwestDialect(PrestoDialect):
+    name = 'kwest'
+
+    @classmethod
+    def dbapi(cls):
+        return kwest

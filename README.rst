@@ -3,6 +3,26 @@
 .. image:: https://img.shields.io/codecov/c/github/dropbox/PyHive.svg
 
 ======
+Kwest
+======
+
+Kwest is a salesforce internal search service built on top of Presto. This module, forked
+from `PyHive <https://github.com/dropbox/PyHive>`_, introduces a SQL dialect, ``KwestDialect``,
+for accessing the Kwest service.
+
+Creating an engine for querying Kwest requires two things: 1) an URL pointing to a running
+Kwest service with protocol ``kwest://``, and 2) the path to the Kwest configuration file.
+
+.. code-block:: python
+   from sqlalchemy import *
+   from sqlalchemy.engine import create_engine
+
+   engine = create_engine('kwest://localhost:8080/hive',
+                connect_args={'KWEST_CONF':'/tmp/config.yml'})
+   result = engine.execute('select * from my_awesome_data LIMIT 10')
+
+# Hive
+======
 PyHive
 ======
 

@@ -41,6 +41,7 @@ setup(
     install_requires=[
         'future',
         'python-dateutil',
+        'pyyaml>=5.3',
     ],
     extras_require={
         'presto': ['requests>=1.0.0'],
@@ -66,6 +67,7 @@ setup(
         'sqlalchemy.dialects': [
             'hive = pyhive.sqlalchemy_hive:HiveDialect',
             'presto = pyhive.sqlalchemy_presto:PrestoDialect',
+            'kwest = pyhive.sqlalchemy_presto:KwestDialect',
         ],
     }
 )
